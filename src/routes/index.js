@@ -20,7 +20,8 @@ let routes = [
         name: 'login',
         url: '/login',
         component: Authentication,
-        exact: true
+        exact: true,
+        params: {test: 'test'}
     },
     {
         name: 'article',
