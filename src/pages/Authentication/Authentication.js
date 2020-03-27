@@ -1,18 +1,25 @@
-import React, {Fragment, useState, useEffect } from 'react';
+import React, {Fragment, useState, useEffect, useContext } from 'react';
 import { Link, Redirect}  from 'react-router-dom';
-import useFetch from '~h/useFetch'
 import { routesMap } from '~/routes'
+import useFetch from '~h/useFetch'
+import useLocalStorage from '~h/useLocalStorage'
+
+import { CurrentUserContext } from '~ctx/CurrentUser'
+
 
 export default function Authentication(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUserName] = useState('');
   const [isSuccesSubmit, setIsSuccesSubmit] = useState(false);
+  const [token, setToken] = useLocalStorage('token');
+  const [currentUserState, setCurrentUserState] = useContext(CurrentUserContext);
 
   const isLogin = routesMap.login === props.match.path;
   const apiUrl = isLogin ? '/users/login' : '/users';
   const [{isLoading, error, response}, {doFetch, setError}] = useFetch(apiUrl);
 
+  console.log('currentUserState', currentUserState);
 
   /** 
    * По отправке формы
@@ -28,15 +35,23 @@ export default function Authentication(props) {
   }
 
 
-  /** Сохранение токена*/
+  /** Сохранение токена и пользователя*/
   useEffect(() => {
     if (!response) return;
-    window?.localStorage?.setItem('token', response?.user?.token);
     setIsSuccesSubmit(true);
-  }, [response])
+    setToken(response?.user?.token);
+    setCurrentUserState(state => ({
+      ...state,
+      currentUser: response?.user,
+      isLoading: false, 
+      isLoggedIn: true
+
+    }))
+  }, [response, setToken, setCurrentUserState])
 
 
   /** Очистка ошибок при вводе в инпуты*/
+  /** TODO вынести в отдельный хук ??*/
   useEffect(() => {
     if (!error) return;
     setError({...error, errors: {...error.errors, username: null }});

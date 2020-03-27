@@ -80,6 +80,7 @@ let conf = {
    '~c': path.resolve(__dirname, 'src/components'),
    '~p': path.resolve(__dirname, 'src/pages'),
    '~h': path.resolve(__dirname, 'src/hooks'),
+   '~ctx': path.resolve(__dirname, 'src/context/'),
   }
  },
  devServer: {

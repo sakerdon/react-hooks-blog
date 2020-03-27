@@ -30,6 +30,12 @@ let routes = [
         exact: true
     },
     {
+        name: 'add',
+        url: '/article/new',
+        component: Article,
+        exact: true
+    },
+    {
         name: 'globalFeed',
         url: '/global-feed',
         component: GlobalFeed,
