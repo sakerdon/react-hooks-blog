@@ -7,7 +7,7 @@ let routes = [
     {
         name: 'home',
         url: '/',
-        component: Article,
+        component: GlobalFeed,
         exact: true
     },
     {

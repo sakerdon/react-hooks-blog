@@ -33,6 +33,5 @@ export default function CurrentUserChecker({ children }) {
     	}));
     }, [response, setCurrentUserState])
 
-    console.log('response', response);
     return isLoading ? <div className="loader">Loading...</div> : children;
 }

@@ -28,15 +28,11 @@ export default (url) => {
         setError(false);
         setIsLoading(false);
         setResponse(res.data);
-        console.log('res', res);
       })
       .catch(err => {
         setIsLoading(false);
-        if(err?.response?.status === 401) {
-            console.log('REDIRECT');
-        } 
         setError(err?.response?.data);
-        console.log('err', err?.response?.data?.errors)
+        // console.log('err', err?.response?.data?.errors)
       })
     }, [isLoading, options, url]);
 

@@ -19,19 +19,12 @@ const [{currentUser, isLoggedIn}] = useContext(CurrentUserContext);
       <div className="nav-item">
        <NavLink
          className="nav-link" 
-         to={routesMap.article} 
+         to={routesMap.home} 
          exact activeClassName="active">
-        Article
+        Home
        </NavLink>
       </div>
-      <div className="nav-item">
-       <NavLink 
-         className="nav-link" 
-         to={routesMap.globalFeed} 
-         exact activeClassName="active">
-        globalFeed
-       </NavLink>
-      </div>
+
 
       { !isLoggedIn 
         ? <Fragment>
@@ -63,9 +56,12 @@ const [{currentUser, isLoggedIn}] = useContext(CurrentUserContext);
             </div>
 
             <div className="nav-item">
-              <div className="nav-link">
-                {currentUser?.username}
-              </div>
+              <NavLink className="nav-link"
+               to={routesMap.add} 
+               >
+              <img className="user-pic" src={currentUser?.image || '//via.placeholder.com/16x16'} alt="User Picture"/>
+                &nbsp;{currentUser?.username}
+              </NavLink>
             </div>
         </Fragment>
       }
