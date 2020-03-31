@@ -8,14 +8,12 @@ import {routesMap} from '~/routes';
 import {getPagination, limit} from '~/utils';
 import {stringify} from 'query-string';
 
-export default function GlobalFeed(props){
+export default function YourFeed(props){
  const {currentPage, offset} = getPagination(props?.location?.search);
  const url = props?.match?.url;
  const queryString = stringify({ limit, offset });
- const apiUrl = `/articles?${queryString}`;
+ const apiUrl = `/articles/feed?${queryString}`;
  const [{isLoading, response, error}, {doFetch}] = useFetch(apiUrl);
-
- // console.log('props', props);
 
  useEffect( () => {
   doFetch();
@@ -25,7 +23,7 @@ export default function GlobalFeed(props){
   <div className="container">
    <div className="row">
     <div className="col-md-9">
-    <FeedTabs tag={'test'}/>
+    <FeedTabs/>
     { isLoading && <div>Lodaing...</div> }
     { error && <div>Error</div> }
     { !isLoading && response && (
@@ -42,12 +40,10 @@ export default function GlobalFeed(props){
      </Fragment>
     :  <div>No articles</div>
     )}
-
     </div>
-    <div className="col-md-3">
-    <TagsCloud />
-    </div>
-
+      <div className="col-md-3">
+        <TagsCloud />
+      </div>
    </div>
 
   </div>

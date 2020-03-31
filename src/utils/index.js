@@ -9,9 +9,8 @@ export const limit = 10;
  */
 export const getPagination = search => {
 	const parsedSearch = parse(search);
-	const currentPage = parsedSearch.page ?  parsedSearch.page : 1;
+	const currentPage = parsedSearch.page ? parsedSearch.page : 1;
 	const offset = currentPage * limit - limit;
-	console.log('{currentPage, offset}', {currentPage, offset});
 	return {currentPage, offset}
 };
 

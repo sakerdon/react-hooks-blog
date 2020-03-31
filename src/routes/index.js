@@ -1,5 +1,7 @@
 import Article from '~p/Article';
 import GlobalFeed from '~p/GlobalFeed';
+import YourFeed from '~p/YourFeed';
+import TagFeed from '~p/TagFeed';
 import Page404 from '~p/Page404';
 import Authentication from '~p/Authentication';
 
@@ -21,7 +23,6 @@ let routes = [
         url: '/login',
         component: Authentication,
         exact: true,
-        params: {test: 'test'}
     },
     {
         name: 'article',
@@ -39,6 +40,18 @@ let routes = [
         name: 'globalFeed',
         url: '/global-feed',
         component: GlobalFeed,
+        exact: true
+    },
+    {
+        name: 'yourFeed',
+        url: '/your-feed',
+        component: YourFeed,
+        exact: true
+    },
+    {
+        name: 'tags',
+        url: '/tags/:tag',
+        component: TagFeed,
         exact: true
     },
     {
