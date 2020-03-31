@@ -4,6 +4,7 @@ import YourFeed from '~p/YourFeed';
 import TagFeed from '~p/TagFeed';
 import Page404 from '~p/Page404';
 import Authentication from '~p/Authentication';
+import Profile from '~p/Profile';
 
 let routes = [
     {
@@ -25,8 +26,14 @@ let routes = [
         exact: true,
     },
     {
+        name: 'profile',
+        url: '/profile/:user',
+        component: Profile,
+        exact: true,
+    },
+    {
         name: 'article',
-        url: '/article',
+        url: '/article/:id',
         component: Article,
         exact: true
     },

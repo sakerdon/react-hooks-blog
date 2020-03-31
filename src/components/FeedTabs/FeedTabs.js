@@ -5,8 +5,6 @@ import { CurrentUserContext } from '~ctx/CurrentUser'
 
 export default function FeedTabs(props) {
  const [currentUserState] = useContext(CurrentUserContext);
-
- console.log('currentUserState', currentUserState);
  return (
   <div className="feed-tabs">
    <div className="nav nav-pills">

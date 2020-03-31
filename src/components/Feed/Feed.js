@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { urlBuilder } from '~/routes';
+import TagList from '~c/TagList';
 
 export default function Feed({ articles }) {
     return (
@@ -12,7 +14,7 @@ export default function Feed({ articles }) {
                           </Link>*/}
               <div className="info">
                 <Link
-                  to={`/profiles/${article.author.username}`}
+                  to={urlBuilder( 'profile', {user: article?.author?.username} )}
                   className="author"
                 >
                   {article?.author?.username}
@@ -20,11 +22,12 @@ export default function Feed({ articles }) {
                 <span className="date">{article.createdAt}</span>
               </div>
             </div>
-            <Link to={`/articles/${article?.slug}`} className="preview-link">
+            <Link to={ urlBuilder('article', {id: article.slug})} className="preview-link">
               <h1>{article.title}</h1>
               <p>{article.description}</p>
               <span>Read more...</span>
             </Link>
+            <TagList tagList={article.tagList}/>
             <hr />
           </div>
         ))}
