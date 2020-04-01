@@ -13,7 +13,7 @@ export default function Authentication(props) {
   const [username, setUserName] = useState('');
   const [isSuccesSubmit, setIsSuccesSubmit] = useState(false);
   const [token, setToken] = useLocalStorage('token');
-  const [currentUserState, setCurrentUserState] = useContext(CurrentUserContext);
+  const [currentUserState, dispatch] = useContext(CurrentUserContext);
 
   const isLogin = routesMap.login === props.match.path;
   const apiUrl = isLogin ? '/users/login' : '/users';
@@ -40,14 +40,9 @@ export default function Authentication(props) {
     if (!response) return;
     setIsSuccesSubmit(true);
     setToken(response?.user?.token);
-    setCurrentUserState(state => ({
-      ...state,
-      currentUser: response?.user,
-      isLoading: false, 
-      isLoggedIn: true
 
-    }))
-  }, [response, setToken, setCurrentUserState])
+    dispatch({type: 'SET_AUTHORIZED', payload: response.user})
+  }, [response, setToken, dispatch])
 
 
   /** Очистка ошибок при вводе в инпуты*/

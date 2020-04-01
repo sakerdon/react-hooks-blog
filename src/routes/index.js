@@ -1,4 +1,5 @@
 import Article from '~p/Article';
+import CreateArticle from '~p/CreateArticle';
 import GlobalFeed from '~p/GlobalFeed';
 import YourFeed from '~p/YourFeed';
 import TagFeed from '~p/TagFeed';
@@ -32,14 +33,14 @@ let routes = [
         exact: true,
     },
     {
-        name: 'article',
-        url: '/article/:id',
-        component: Article,
+        name: 'add',
+        url: '/articles/new',
+        component: CreateArticle,
         exact: true
     },
     {
-        name: 'add',
-        url: '/article/new',
+        name: 'article',
+        url: '/article/:id',
         component: Article,
         exact: true
     },
