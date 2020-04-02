@@ -7,8 +7,8 @@ import {CurrentUserContext} from '~ctx/CurrentUser';
 
 export default function CreateArticle() {
 	const [{isLoggedIn}] = useContext(CurrentUserContext);
-	
-	if (!isLoggedIn) {
+
+	if (isLoggedIn === false) {
 		return <Redirect to={routesMap.home} />
 	}
 
