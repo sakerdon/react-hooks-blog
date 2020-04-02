@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { urlBuilder } from '~/routes';
 import TagList from '~c/TagList';
+import AddToFavorites from '~c/AddToFavorites';
 
 export default function Feed({ articles }) {
     return (
@@ -28,6 +29,11 @@ export default function Feed({ articles }) {
               <span>Read more...</span>
             </Link>
             <TagList tagList={article.tagList}/>
+            <AddToFavorites 
+              isFavorited={article.favorited}
+              articleId={article.slug}
+              favoritesCount={article.favoritesCount}
+            />
             <hr />
           </div>
         ))}

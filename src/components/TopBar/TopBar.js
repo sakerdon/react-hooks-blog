@@ -57,6 +57,14 @@ const [{currentUser, isLoggedIn}] = useContext(CurrentUserContext);
 
             <div className="nav-item">
               <NavLink className="nav-link"
+               to={routesMap.settings} 
+               >
+                &nbsp;Settings
+              </NavLink>
+            </div>
+
+            <div className="nav-item">
+              <NavLink className="nav-link"
                to={routesMap.add} 
                >
               <img className="user-pic" src={currentUser?.image || '//via.placeholder.com/16x16'} alt="User Picture"/>

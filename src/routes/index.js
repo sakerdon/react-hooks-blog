@@ -7,6 +7,7 @@ import TagFeed from '~p/TagFeed';
 import Page404 from '~p/Page404';
 import Authentication from '~p/Authentication';
 import Profile from '~p/Profile';
+import Settings from '~p/Settings';
 
 let routes = [
     {
@@ -25,6 +26,12 @@ let routes = [
         name: 'login',
         url: '/login',
         component: Authentication,
+        exact: true,
+    },
+    {
+        name: 'settings',
+        url: '/settings/',
+        component: Settings,
         exact: true,
     },
     {
