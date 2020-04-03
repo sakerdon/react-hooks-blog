@@ -10,6 +10,8 @@ export default (url) => {
     const baseUrl = process.env.REACT_APP_BASE_URL;
     const [token] = useLocalStorage('token');
 
+    let cancelResponseWhenHookDestroyed = false;
+
     const doFetch = useCallback((options = {}) => {
         setOptions(options);
         setIsLoading(true);
@@ -25,15 +27,21 @@ export default (url) => {
             } 
         }})
       .then(res => {
+        if (cancelResponseWhenHookDestroyed) return;
         setError(false);
         setIsLoading(false);
         setResponse(res.data);
       })
       .catch(err => {
+        if (cancelResponseWhenHookDestroyed) return;
         setIsLoading(false);
         setError(err?.response?.data);
         // console.log('err', err?.response?.data?.errors)
       })
+
+      // Отмена запроса
+      return () => { cancelResponseWhenHookDestroyed = true };
+
     }, [isLoading, options, url]);
 
     return [{isLoading, response, error}, {doFetch, setError}];

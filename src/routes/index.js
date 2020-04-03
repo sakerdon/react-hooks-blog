@@ -41,6 +41,12 @@ let routes = [
         exact: true,
     },
     {
+        name: 'profile-favorites',
+        url: '/profile/:user/favorites',
+        component: Profile,
+        exact: true,
+    },
+    {
         name: 'add',
         url: '/article/new',
         component: CreateArticle,

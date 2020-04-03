@@ -4,7 +4,7 @@ import useFetch from '~h/useFetch';
 
 export default function AddToFavorites(props) {
 	const apiUrl = `/articles/${props.articleId}/favorite`;
-	const [{response}, {doFetch}] = useFetch(apiUrl);
+	const [{response, isLoading}, {doFetch}] = useFetch(apiUrl);
 	const count = response ? response?.article?.favoritesCount : props.favoritesCount;
 	const isFavorited = response ? response?.article?.favorited : props.isFavorited;
 
@@ -15,8 +15,12 @@ export default function AddToFavorites(props) {
 	return (
 		<button 
 			className={'favorites btn ' + ( isFavorited ? 'btn-primary' : 'btn-secondary' )}
+			disabled={isLoading}
 			onClick={onClick}>
-			♡ {count}
+			{ isLoading 
+				? <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+				: '♡ ' + count
+			}
 		</button>
 	)
 };

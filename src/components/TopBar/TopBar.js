@@ -1,6 +1,6 @@
 import React, { useContext, Fragment } from 'react';
 import {NavLink} from 'react-router-dom';
-import { routesMap } from '~/routes';
+import { routesMap, urlBuilder } from '~/routes';
 import { CurrentUserContext } from '~ctx/CurrentUser';
 
 
@@ -65,7 +65,7 @@ const [{currentUser, isLoggedIn}] = useContext(CurrentUserContext);
 
             <div className="nav-item">
               <NavLink className="nav-link"
-               to={routesMap.add} 
+               to={urlBuilder('profile', {user: currentUser.username})} 
                >
               <img className="user-pic" src={currentUser?.image || '//via.placeholder.com/16x16'} alt="User Picture"/>
                 &nbsp;{currentUser?.username}
