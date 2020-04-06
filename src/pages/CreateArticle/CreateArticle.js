@@ -16,7 +16,6 @@ export default function CreateArticle() {
 	const apiUrl = `/articles`;
 	const [{error, isLoading, response}, {doFetch}] = useFetch(apiUrl);
 
-	console.log('isLoggedIn', isLoggedIn);
 	const initialValues = {
 		title: '',
 		description: '',
@@ -27,7 +26,6 @@ export default function CreateArticle() {
 
 	const onSubmit = article => {
 		doFetch({method: 'post', data: article})
-		console.log('article', article);
 	};
 
 	useEffect( () => {
@@ -36,8 +34,7 @@ export default function CreateArticle() {
 	}, [response, setIsSubmit] )
 
 	if(isSubmit) {
-		console.log('response.article.slug', response.article.slug);
-		{return <Redirect to={urlBuilder('article', {id: response.article.slug})} />}
+		return <Redirect to={urlBuilder('article', {id: response.article.slug})} />
 	}
 
 	return (

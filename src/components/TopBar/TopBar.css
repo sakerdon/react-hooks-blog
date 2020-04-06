@@ -1,0 +1,25 @@
+.navbar {
+	padding: 0;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+.top-bar {
+	margin: 20px 0;
+}
+
+
+.user-pic {
+    width: 40px;
+    height: 40px;
+    border: 2px solid silver;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.navbar-nav {
+    align-items: center;
+}

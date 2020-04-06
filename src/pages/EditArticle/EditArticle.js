@@ -22,7 +22,6 @@ export default function EditArticle(props) {
 			}, 
 			{ doFetch: doArticleFetch}
 	] = useFetch(getArticleApiUrl);
-	console.log('getArticleResponse', getArticleResponse);
 
 
 	const [isSubmit, setIsSubmit] = useState(false);

@@ -9,7 +9,6 @@ export default function AddToFavorites(props) {
 	const isFavorited = response ? response?.article?.favorited : props.isFavorited;
 
 	const onClick = () => {
-		console.log('test', props.articleId);
 		doFetch({method: isFavorited ? 'delete' : 'post'});
 	};
 	return (

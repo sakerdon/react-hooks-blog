@@ -19,8 +19,6 @@ export default function Authentication(props) {
   const apiUrl = isLogin ? '/users/login' : '/users';
   const [{isLoading, error, response}, {doFetch, setError}] = useFetch(apiUrl);
 
-  console.log('currentUserState', currentUserState);
-
   /** 
    * По отправке формы
    * @param e - event инпута

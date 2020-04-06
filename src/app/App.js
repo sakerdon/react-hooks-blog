@@ -4,7 +4,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import TopBar from '~c/TopBar';
 import CurrentUserChecker from '~c/CurrentUserChecker';
 
-import { CurrentUserProvider } from '~ctx/CurrentUser'
+import { CurrentUserProvider } from '~ctx/CurrentUser';
+
 
 export default function App() {
     let routesComponents = routes.map((route) => {

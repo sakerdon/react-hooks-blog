@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import useFetch from '~h/useFetch'
+import Loader from '~c/Loader'
 import useLocalStorage from '~h/useLocalStorage'
 import { CurrentUserContext } from '~ctx/CurrentUser';
 
@@ -24,5 +25,5 @@ export default function CurrentUserChecker({ children }) {
     	
     }, [response, dispatch])
 
-    return isLoading ? <div className="loader">Loading...</div> : children;
+    return isLoading ? <Loader /> : children;
 }

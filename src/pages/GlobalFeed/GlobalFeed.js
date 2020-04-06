@@ -1,6 +1,9 @@
 import React, { useEffect, Fragment } from 'react';
+
 import useFetch from '~h/useFetch';
 import Feed from '~c/Feed';
+import Loader from '~c/Loader';
+import ErrorMessage from '~c/ErrorMessage';
 import TagsCloud from '~c/TagsCloud';
 import Pagination from '~c/Pagination';
 import FeedTabs from '~c/FeedTabs';
@@ -15,8 +18,6 @@ export default function GlobalFeed(props){
  const apiUrl = `/articles?${queryString}`;
  const [{isLoading, response, error}, {doFetch}] = useFetch(apiUrl);
 
- // console.log('props', props);
-
  useEffect( () => {
   doFetch();
  }, [doFetch, queryString]);
@@ -25,9 +26,9 @@ export default function GlobalFeed(props){
   <div className="container">
    <div className="row">
     <div className="col-md-9">
-    <FeedTabs tag={'test'}/>
-    { isLoading && <div>Lodaing...</div> }
-    { error && <div>Error</div> }
+    <FeedTabs/>
+    { isLoading && <Loader /> }
+    { error && <ErrorMessage /> }
     { !isLoading && response && (
       response?.articles?.length 
     ?

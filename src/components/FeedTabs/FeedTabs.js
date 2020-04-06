@@ -7,7 +7,7 @@ export default function FeedTabs(props) {
  const [currentUserState] = useContext(CurrentUserContext);
  return (
   <div className="feed-tabs">
-   <div className="nav nav-pills">
+   <div className="nav">
     { currentUserState.isLoggedIn && (
      <div className="nav-item">
       <NavLink to={routesMap.yourFeed} className="nav-link">Your Feed</NavLink>

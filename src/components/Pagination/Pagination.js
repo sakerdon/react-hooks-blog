@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 export default function Pagination({url, currentPage, limit, total}) {
-	console.log({url, currentPage, limit, total});
 	const pagesCount = Math.ceil(total / limit);
 	const pagesList = [...Array(pagesCount).keys()].map( el => el + 1 )
 

@@ -1,0 +1,25 @@
+
+.tag-list {
+    margin: 0 -2px;
+}
+
+.favorites.btn {
+    margin-top: 20px;
+}
+
+.article-preview {
+    max-width: 100%;
+}
+
+.preview-link {
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.article-meta .author, .article-meta .date {
+    display: block;
+}
+
+.article-meta .date {
+    color: silver;
+}

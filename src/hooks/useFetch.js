@@ -36,7 +36,6 @@ export default (url) => {
         if (cancelResponseWhenHookDestroyed) return;
         setIsLoading(false);
         setError(err?.response?.data);
-        // console.log('err', err?.response?.data?.errors)
       })
 
       // Отмена запроса

@@ -16,8 +16,6 @@ export default function TagFeed(props){
  const apiUrl = `/articles?${queryString}`;
  const [{isLoading, response, error}, {doFetch}] = useFetch(apiUrl);
 
- // console.log('props', props);
-
  useEffect( () => {
   doFetch();
  }, [doFetch, queryString]);

@@ -17,7 +17,6 @@ export default function Profile(props) {
 
  if (!response) return <Loader />;
 
- console.log('user res', response);
  return (
     <div className="profile-page">
       <div className="user-info">
